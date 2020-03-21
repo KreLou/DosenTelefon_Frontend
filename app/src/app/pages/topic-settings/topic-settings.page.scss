@@ -1,0 +1,43 @@
+
+.segment {
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50px;
+    margin-top: 1vh;
+    border: none;
+    outline: none;
+    .ok-button {
+        background-color: rgb(169, 180, 169);
+    }
+    .ok-button.segment-button-checked {
+        background-color: rgb(84, 117, 84);
+        color: rgb(0,0,0);
+    }
+    .neutral-button {
+        width: 60%;
+    }
+    .nok-button {
+        background-color: rgb(253, 227, 227);
+    }
+    .nok-button.segment-button-checked {
+        background-color: rgb(255, 159, 159);
+        color: rgb(0,0,0);
+    }
+
+    .segment-button-checked {
+        border-bottom-color: transparent !important;
+        box-shadow: none !important;
+        --border-color: transparent !important;
+        --border-style: none;
+        --indicator-color: none;
+    }
+
+    .segment-button-checked:hover {
+        color: rgb(0,0,0) !important;
+    }
+}
+
+ion-button {
+    margin-top: 3vh;
+}

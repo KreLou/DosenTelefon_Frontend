@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="main"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Themen Auswahl</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content">
+  <ng-container *ngIf="topics">
+
+    <ng-container *ngFor="let topic of topics">
+
+      <ion-segment [value]="topic.Status" class="segment" mode="md" (ionChange)="onChange($event, topic)">
+        <ion-segment-button value="2" class="nok-button">
+          <ion-icon name="heart-dislike"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="1" class="neutral-button">{{topic.Title}}</ion-segment-button>
+        <ion-segment-button value="0" class="ok-button">
+          <ion-icon name="heart"></ion-icon>
+        </ion-segment-button>
+      </ion-segment>
+
+    </ng-container>
+
+    <ion-button expand="block" (click)="onSaveClick()">Speichern</ion-button>
+
+  </ng-container>
+
+</ion-content>
