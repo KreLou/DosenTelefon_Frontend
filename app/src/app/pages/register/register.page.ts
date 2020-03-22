@@ -14,7 +14,11 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
     this.activeRoute.params.subscribe(params => {
       const token = params['token'];
+      const uuid = params['uuid'];
       console.log('Token: ', token);
+      console.log('UUID: ', uuid);
+      this.authService.setUUID(uuid);
+      
       this.authService.setToken(token);
       this.router.navigate(['']);
     })

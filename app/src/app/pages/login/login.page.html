@@ -3,30 +3,44 @@
 
   <div class="logindiv">
 
-    <img src="../../../assets/logo.png">
+    <div class="image-row">
+      <img src="../../../assets/logo.png">
+    </div>
 
     <div class="info-text">
+      <p>Hallo und Willkommen beim DosenTelefon! Mit dem DosenTelefon kannst du dich mit Menschen in ganz Deutschland vernetzen. Gib einfach deine Email-Adresse an und wir senden dir einen Login-Link.</p>
       <p>
-        Hallo und Willkommen beim DosenTelefon!</p>
-        <p>Mit dem DosenTelefon kannst du dich mit Menschen in ganz Deutschland vernetzen. Dazu suchst du einfach aus, in welcher Stimmung du gerade bist - nachdenklich, traurig oder lustig. Zusätzlich kannst du den Filter “Ich möchte nicht über Corona reden” anstellen. 
+        Und dann geht es auch direkt los: nach Zufallsprinzip verbinden wir dich mit einer anderen Person. Damit das Gespräch nicht ins Stocken kommt, stellen wir euch Karten mit vorgefertigten Fragen zu Verfügung. Zusätzlich kannst du den Filter “Ich möchte nicht über Corona reden” anstellen.
+      </p>
+      <p>
+        Seid freundlich zueinander, respektiert eure Gesprächspartner, und am allerwichtigsten: Habt Spaß!
       </p>
     </div>
-    <form [formGroup]="loginFormGroup">
+    <form [formGroup]="loginFormGroup" *ngIf="!hiddeLoginForm; else showInfo">
       <ion-item style="margin: 4vh 1vw 0vh 1vw;" lines="full">
         <ion-input #usernameInput formControlName="usernameCtrl" color="dark" placeholder="Username"></ion-input>
       </ion-item>
       <ion-item style="margin: 1vh 1vw 4vh 1vw;" lines="full">
         <ion-input #emailInput type="email" color="dark"  formControlName="emailCtrl" placeholder="E-Mail-Adresse"></ion-input>
       </ion-item>
-      <ion-button ion-button full (click)="doLogin()" class="loginfullwidth" [disabled]="!loginFormGroup.valid">Login anfordern</ion-button>
+      <ion-button ion-button full (click)="doLogin()" class="loginfullwidth" [disabled]="!loginFormGroup.valid">Jetzt verdrahten!</ion-button>
     </form>
+
+    <ng-template #showInfo>
+      <p *ngIf="showError; else okBlock">Leider gab es einen Fehler. Bitte versuche es später erneut.</p>
+      <ng-template #okBlock>
+
+        <p>Bitte prüfe deinen E-Mail Eingang.</p>
+      </ng-template>
+    </ng-template>
+
     <br/><br/>
     <ion-grid class="buttons">
       <ion-row>
         <ion-col size="5">
-          <a href="imprint" class="logintext">
+          <!--<a href="imprint" class="logintext">
             Impressum
-          </a>
+          </a>-->
         </ion-col>
         <ion-col size="5">
             <a class="logintext" (click)="onOpenDisclaimer()">
@@ -34,9 +48,9 @@
             </a>
           </ion-col>
           <ion-col size="2">
-              <a href="about" class="logintext">
+              <!--<a href="about" class="logintext">
                 Über
-              </a>
+              </a>-->
             </ion-col>
       </ion-row>
     </ion-grid>

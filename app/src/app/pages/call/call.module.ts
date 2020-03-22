@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { CallPageRoutingModule } from './call-routing.module';
 
 import { CallPage } from './call.page';
+import { DeckSelectionComponent } from './deck-selection/deck-selection.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CallPageRoutingModule
+    CallPageRoutingModule    
   ],
-  declarations: [CallPage]
+  declarations: [CallPage, DeckSelectionComponent],
+  entryComponents: [DeckSelectionComponent]
 })
 export class CallPageModule {}

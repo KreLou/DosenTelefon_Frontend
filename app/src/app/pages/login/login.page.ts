@@ -12,6 +12,8 @@ import { UserLoaderService } from 'src/app/services/user-loader.service';
 export class LoginPage implements OnInit {
 
   public loginFormGroup: FormGroup;
+  public hiddeLoginForm = false;
+  public showError = false;
 
   constructor(private modalController: ModalController, private userLoader: UserLoaderService) { }
 
@@ -26,9 +28,12 @@ export class LoginPage implements OnInit {
     if (this.loginFormGroup.valid) {
       const email = this.loginFormGroup.controls['emailCtrl'].value;
       const username = this.loginFormGroup.controls['usernameCtrl'].value;
-      console.log('TODO: Register Email: ' + email + ' for user: ' + username);
       this.userLoader.postNewUser(username, email).subscribe(data => {
         console.log(data);
+        this.hiddeLoginForm = !this.hiddeLoginForm;
+      }, error => {
+        this.showError = true;
+        this.hiddeLoginForm = !this.hiddeLoginForm;
       })
     }
   }
