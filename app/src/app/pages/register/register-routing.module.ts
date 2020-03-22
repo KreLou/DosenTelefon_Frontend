@@ -5,7 +5,7 @@ import { RegisterPage } from './register.page';
 
 const routes: Routes = [
   {
-    path: ':token/:uuid',
+    path: ':uuid/:token',
     component: RegisterPage
   }
 ];
