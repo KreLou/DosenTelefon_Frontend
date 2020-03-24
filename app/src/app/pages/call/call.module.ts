@@ -8,6 +8,7 @@ import { CallPageRoutingModule } from './call-routing.module';
 
 import { CallPage } from './call.page';
 import { DeckSelectionComponent } from './deck-selection/deck-selection.component';
+import { TimerDisplayPipe } from 'src/app/pipes/timer-display.pipe';
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import { DeckSelectionComponent } from './deck-selection/deck-selection.componen
     IonicModule,
     CallPageRoutingModule    
   ],
-  declarations: [CallPage, DeckSelectionComponent],
+  declarations: [CallPage, DeckSelectionComponent, TimerDisplayPipe],
   entryComponents: [DeckSelectionComponent]
 })
 export class CallPageModule {}

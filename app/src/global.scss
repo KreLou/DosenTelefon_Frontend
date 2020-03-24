@@ -33,12 +33,28 @@
     margin-right: auto;
 }
 
+ion-content.no-bg-image {
+    --background: #e3e3e3;
+}
+
 ion-title {
     text-align: center;
 }
 
 ion-content {
     --background: #e3e3e3 url('assets/background.png') no-repeat center center / contain;
+}
+
+ion-card {
+    ion-card-header {
+        ion-card-title {
+            font-size: 28px;
+        }
+    }
+    ion-card-content {
+        font-size: 20px;
+        color: #000;
+    }
 }
 
 :root {

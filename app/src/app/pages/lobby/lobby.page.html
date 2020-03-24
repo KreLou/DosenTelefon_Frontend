@@ -1,10 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Lobby</ion-title>
+    <ion-title>Dosen Telefon</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-card class="waiting-card">
+    <ion-card-header>
+      <ion-card-title>
+        Tipp des Tages
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{waitingStrings[counter]}}
+    </ion-card-content>
+  </ion-card>
 
   <div class="spinner-container">
     <ion-spinner name="bubbles"></ion-spinner>

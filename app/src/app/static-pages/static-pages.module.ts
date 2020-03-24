@@ -2,20 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DisclaimerComponent } from '../StaticPages/disclaimer/disclaimer.component';
 import { IonicModule } from '@ionic/angular';
+import { PrivacyComponent } from '../StaticPages/privacy/privacy.component';
 
 
 
 @NgModule({
-  declarations: [DisclaimerComponent],
+  declarations: [DisclaimerComponent, PrivacyComponent],
   imports: [
     IonicModule,
     CommonModule
   ],
   exports: [
-    DisclaimerComponent
+    DisclaimerComponent,
+    PrivacyComponent
   ],
   entryComponents: [
-    DisclaimerComponent
+    DisclaimerComponent,
+    PrivacyComponent
   ]
 })
 export class StaticPagesModule { }

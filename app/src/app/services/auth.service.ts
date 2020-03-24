@@ -17,16 +17,14 @@ export class AuthService {
 
     this.UserToken.subscribe(token => {
       if (token) {
-        console.log('Handle new Token: ', token);
         this.userLoader.getUserItem(this.getUUID()).subscribe(data => {
-          console.log('UserData: ', data);
+          this.UserItem.next(data);
         })
       }
     })
 
     if (localStorage.getItem('token')) {
       const foundToken = localStorage.getItem('token');
-      console.log('FoundToken: ', foundToken);
       this.setToken(foundToken);
     }
 

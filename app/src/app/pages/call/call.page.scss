@@ -13,6 +13,19 @@
             border-radius: 100%;
 }
 
+.timer-row {
+    width: 100%;
+    .badge {
+        margin-top: 4vh;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50px;
+        ion-badge {
+            transform: scale(2);
+        }
+    }
+}
+
 ion-select{
     position: absolute;
     display: none !important;

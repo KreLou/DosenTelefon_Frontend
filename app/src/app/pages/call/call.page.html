@@ -17,11 +17,16 @@
     <ion-select-option *ngFor="let deck of decks">{{deck.title}}</ion-select-option>
   </ion-select>
 
+  <div class="timer-row">
+    <div class="badge">
+      <ion-badge color="dark">{{time | timerDisplay}}</ion-badge>
+    </div>
+  </div>
 
   <ion-card *ngIf="activeTitle">
     <ion-card-header>
       <ion-card-title>Neue Frage:</ion-card-title>
-      <ion-card-subtitle>Deck: {{decks[activeDeckIndex].title}}</ion-card-subtitle>
+      <ion-card-subtitle>Deck: {{activeDeckString}}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
       {{activeTitle}}

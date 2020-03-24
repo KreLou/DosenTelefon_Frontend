@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserItem } from 'src/app/models/user-item';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { UserLoaderService } from 'src/app/services/user-loader.service';
+import { WebSocketConnectionService } from 'src/app/services/web-socket-connection.service';
 
 @Component({
   selector: 'app-main',
@@ -11,20 +14,30 @@ export class MainPage implements OnInit {
 
   private userItem: UserItem;
 
-  constructor(public authService: AuthService) { }
+  public defaultValue: 'yes' | 'no' | 'neutral' = 'neutral';
+
+  constructor(public authService: AuthService, private router: Router, private userLoader: UserLoaderService, private webSocket: WebSocketConnectionService) { }
 
   ngOnInit() {
-    this.authService.UserItem.subscribe(user => this.userItem = user);
-
+    this.authService.UserItem.subscribe(user => {
+      this.userItem = user;
+      if (user) {
+        if (this.userItem.topicsOK.indexOf('corona') >= 0) {
+          this.defaultValue = 'yes'
+        } else if (this.userItem.topicsNotOK.indexOf('corona') >= 0) {
+          this.defaultValue = 'no';
+        }
+      }
+    });
   }
 
   onSelectClick() {
-
+    this.webSocket.sendConnection(this.userItem).then(() => {
+      this.router.navigate(['lobby']);
+    })
   }
 
   onPreferenceChange(event) {
-    console.log(event);
-    console.log('user: ', this.userItem);
 
     var okTopics = []
     var nokTopics = [];
@@ -33,10 +46,13 @@ export class MainPage implements OnInit {
       case 'no': nokTopics = ['corona']
       case 'yes': okTopics = ['corona']
     }
-    console.log('NOK: ', nokTopics);
+
     this.userItem.topicsNotOK = nokTopics;
     this.userItem.topicsOK = okTopics;
-    console.log('User: ', this.userItem);
+    console.log('Update user: ', this.userItem);
+    this.userLoader.updateUserItem(this.userItem).subscribe(data => {
+      this.authService.UserItem.next(data);
+    })
   }
 
 }

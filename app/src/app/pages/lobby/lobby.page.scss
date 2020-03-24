@@ -1,6 +1,6 @@
 .spinner-container {
     width: 100%;
-    margin-top: 80%;
+    margin-top: 40%;
 
     ion-spinner{
         transform: scale(3);
@@ -9,5 +9,14 @@
 }
 
 .button {
-    margin-top: 30%;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.waiting-card {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
 }

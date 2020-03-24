@@ -12,7 +12,7 @@
 <ion-content>
 
   <ion-list class="corona-list shadow">
-    <ion-radio-group (ionChange)="onPreferenceChange($event)">
+    <ion-radio-group (ionChange)="onPreferenceChange($event)" [value]="defaultValue">
       <ion-list-header>
         <ion-label color="primary">Möchtest du über Corona sprechen?</ion-label>
       </ion-list-header>
@@ -21,7 +21,7 @@
         <ion-radio value="no"></ion-radio>
       </ion-item>
       <ion-item>
-        <ion-label>Mit egal</ion-label>
+        <ion-label>Mir egal</ion-label>
         <ion-radio value="neutral"></ion-radio>
       </ion-item>
       <ion-item lines="none">

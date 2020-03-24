@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { DeckLoaderService } from 'src/app/services/deck-loader.service';
 import { PopoverController, IonSelect } from '@ionic/angular';
 import { DeckSelectionComponent } from './deck-selection/deck-selection.component';
@@ -13,7 +13,7 @@ export class Deck{
   templateUrl: './call.page.html',
   styleUrls: ['./call.page.scss'],
 })
-export class CallPage implements OnInit {
+export class CallPage implements OnInit, OnDestroy {
 
   public decks: Deck[] =  [
     {
@@ -35,7 +35,11 @@ export class CallPage implements OnInit {
   public activeDeckIndex = 0;
 
   public activeTitle: string;
-  public partner = "TODO"
+  public activeDeckString: string;
+  public partner = "Doris"
+
+  public time = 0;
+  private interval: any;
 
 
   @ViewChild('selectionList', {static: true}) selectionList: IonSelect;
@@ -47,6 +51,10 @@ export class CallPage implements OnInit {
     this.deckLoader.getDecks().subscribe(data => {
       console.log('Decks: ', data);
     })
+    this.interval = setInterval(() => this.time = this.time + 1, 1000);
+  }
+  ngOnDestroy() {
+    clearInterval(this.interval);
   }
 
   async onDeckChangeClick(ev: any) {
@@ -60,6 +68,7 @@ export class CallPage implements OnInit {
 
   onNewCardClick() {
     const newText = this.decks[this.activeDeckIndex].cards.shift();
+    this.activeDeckString = this.decks[this.activeDeckIndex].title;
     this.activeTitle = newText;
     console.log('new: ', newText);
   }
