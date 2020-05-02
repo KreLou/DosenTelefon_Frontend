@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL: 'https://api.prod.dosen-telefon.de/',
-  apiURL_Decks: 'https://du1k1vp9l5.execute-api.eu-central-1.amazonaws.com/prod/',
+  apiURL: 'https://api.dev.dosen-telefon.de/',
   socket_url: 'wss://websocket.dev.dosen-telefon.de'
 };
 
