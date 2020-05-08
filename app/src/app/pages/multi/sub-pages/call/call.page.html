@@ -1,0 +1,100 @@
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-title>Anruf mit {{partner}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="notification-button" (click)="onDeckChangeClick($event)">
+        <ion-badge color="secondary" class="notification-badge">{{decks.length}}</ion-badge>
+        <ion-icon slot="icon-only" name="albums-outline"></ion-icon>
+        
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>-->
+
+<ion-content>
+
+  <ion-select #selectionList interface="action-sheet" mode="ios" (ionChange)="onSelectionChange($event)">
+    <ion-select-option *ngFor="let deck of decks">{{deck.title}}</ion-select-option>
+  </ion-select>
+
+  <div class="timer-row">
+    <div class="badge">
+      <ion-badge color="dark">{{time | timerDisplay}}</ion-badge>
+    </div>
+  </div>
+
+  <ng-container *ngIf="decks.length >0">
+
+    
+    <div class="deck-changer">
+      <ion-button [disabled]="activeDeckIndex <= 0" (click)="activeDeckIndex = activeDeckIndex -1"><ion-icon slot="icon-only" name="caret-back-outline"></ion-icon></ion-button>
+      <ion-button class="text-button" disabled color="dark"> {{decks[activeDeckIndex].title}}
+      </ion-button>
+      <ion-button [disabled]="activeDeckIndex >= decks.length -1" (click)="activeDeckIndex = activeDeckIndex +1"><ion-icon slot="icon-only" name="caret-forward-outline"></ion-icon></ion-button>
+    </div>
+    
+    <div class="cards">
+      <ng-container *ngIf="decks[activeDeckIndex].cards.length === 0">
+        <h2>\_(+,+)_/</h2>
+        <h4>Keine Karten mehr</h4>
+      </ng-container>
+      <ng-container *ngFor="let card of decks[activeDeckIndex].cards; let index = index">
+        <ion-card #ionCard class="tinder--card" (pan)="handlePan($event)" (panend)="handlePanEnd($event)" [ngStyle]="{zIndex: decks[activeDeckIndex].cards.length - index, transform: 'scale(' + (20 - index) / 20 + ') translateY(-' + 20 * index + 'px)'}">
+          <ion-card-header>
+            <ion-card-title>
+              <ion-text color="primary">Neue Frage:</ion-text>
+            </ion-card-title>
+            <ion-card-subtitle>Deck: {{decks[activeDeckIndex].title}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            {{card}}
+          </ion-card-content>
+        </ion-card>    
+      </ng-container>
+    </div>
+    
+    <div class="newCard">
+      <ion-button expand="full" color="secondary" [disabled]="decks[activeDeckIndex].cards.length == 0" (click)="onManualMove()">Neue Karte</ion-button>
+    </div>
+
+  </ng-container>
+
+  <!--
+  <ion-card *ngIf="activeTitle">
+    <ion-card-header>
+      <ion-card-title>Neue Frage:</ion-card-title>
+      <ion-card-subtitle>Deck: {{activeDeckString}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      {{activeTitle}}
+    </ion-card-content>
+  </ion-card>-->
+
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" class="hang-up-button">
+    <ion-fab-button color="danger" (click)="onClose()">
+      <ion-icon name="call-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!--<div class="newCard">
+    <ion-button expand="full" color="secondary" [disabled]="decks[activeDeckIndex].cards.length == 0" (click)="onNewCardClick()">Neue Karte</ion-button>
+  </div>-->
+  <!--<div *ngIf="decks">
+    <div *ngIf="decks.length == 2">
+      <table>
+        <tr>
+          <td class="button1">
+            <mat-icon name="happy-outline"></mat-icon>
+          </td>
+          <td></td>
+          <td class="button2">
+
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>-->
+
+
+</ion-content>

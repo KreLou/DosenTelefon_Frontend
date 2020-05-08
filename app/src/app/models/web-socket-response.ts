@@ -5,6 +5,8 @@ export class WebSocketResponse {
 }
 
 export class CallRequestBody {
-    openrainbowDetails: any;
+    peerId: string;
+    userUuid: string | null;
     username: string | null;
+    caller: boolean;
 }

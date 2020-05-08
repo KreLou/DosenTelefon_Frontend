@@ -7,11 +7,6 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
-  },
-  {
-    path: 'main',
-    loadChildren: () => import('./pages/main/main.module').then( m => m.MainPageModule),
-    canActivate: [AuthenticatedUserGuard]
   }, {
     path: '',
     redirectTo: 'main',
@@ -22,13 +17,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/topic-settings/topic-settings.module').then( m => m.TopicSettingsPageModule)
   },
   {
-    path: 'call',
-    loadChildren: () => import('./pages/call/call.module').then( m => m.CallPageModule)
-  },
-  {
-    path: 'lobby',
-    loadChildren: () => import('./pages/lobby/lobby.module').then( m => m.LobbyPageModule)
+    path: 'main',
+    canActivate: [AuthenticatedUserGuard],
+    loadChildren: () => import('./pages/multi/multi.module').then( m => m.MultiPageModule)
   }
+
 ];
 
 @NgModule({

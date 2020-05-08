@@ -1,0 +1,30 @@
+<!-- <ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Dosen Telefon</ion-title>
+
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+
+  <ion-list class="corona-list shadow">
+    <ion-radio-group (ionChange)="onPreferenceChange($event)" [value]="defaultValue">
+      <ion-list-header>
+        <ion-label color="primary">Möchtest du über Corona sprechen?</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Kein Interesse</ion-label>
+        <ion-radio value="no"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Mir egal</ion-label>
+        <ion-radio value="neutral"></ion-radio>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Möchte darüber sprechen</ion-label>
+        <ion-radio value="yes"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+  <ion-button expand="block" (click)="onSelectClick()">Gesprächspartner suchen</ion-button>
+</ion-content>

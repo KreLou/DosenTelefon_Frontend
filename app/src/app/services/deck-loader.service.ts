@@ -13,4 +13,7 @@ export class DeckLoaderService {
   public getDecks(): Observable<any> {
     return this.http.get(environment.apiURL + 'decks');
   }
+  public getDeck(deck: string): Observable<any> {
+    return this.http.get(environment.apiURL + 'decks/' + deck);
+  }
 }

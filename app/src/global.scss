@@ -33,6 +33,12 @@
     margin-right: auto;
 }
 
+.modal-wrapper {
+    ion-content {
+        padding: 8px !important
+    }
+}
+
 ion-content.no-bg-image {
     --background: #e3e3e3;
 }

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Dosen Telefon</ion-title>
+    <!--<ion-buttons slot="end">
+      <ion-button routerLink="/topics">
+        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>-->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ng-container [ngSwitch]="status">
+    
+    <!--No call-->
+    <ng-container *ngSwitchCase="0">
+      <app-main></app-main>
+    </ng-container>
+    
+    <!--Waiting-->
+    <ng-container *ngSwitchCase="1">
+      <app-lobby></app-lobby>
+    </ng-container>
+    
+    <!--Pending-->
+    <ng-container *ngSwitchCase="2">
+      <app-pending></app-pending>
+    </ng-container>
+
+    <!--in call-->
+    <ng-container *ngSwitchCase="3">
+      <app-call></app-call>
+    </ng-container>
+  </ng-container>
+  
+</ion-content>

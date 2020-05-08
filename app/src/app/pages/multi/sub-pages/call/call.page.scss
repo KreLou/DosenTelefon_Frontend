@@ -1,0 +1,126 @@
+.notification-button {
+    position: relative;
+    width: 42px;
+    top:1px;
+    right: 1px;
+    overflow: visible!important;
+}
+.notification-badge {
+    background-color: red;
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            border-radius: 100%;
+}
+
+.timer-row {
+    width: 100%;
+    .badge {
+        margin-top: 4vh;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50px;
+        ion-badge {
+            transform: scale(2);
+        }
+    }
+}
+
+ion-select{
+    position: absolute;
+    display: none !important;
+    .select-icon, .select-text {
+        display: none !important;
+    }
+}
+
+.deck-changer {
+    margin-top: 2em;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    ion-button.text-button {
+        width: 60%;
+    }
+}
+
+.cards {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60%;
+  overflow: hidden;
+  ion-card {
+    border: 1px solid rgb(46, 46, 46);
+    display: inline-block;
+    width: 80%;
+    background: #FFFFFF;
+    padding-bottom: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: absolute;
+    will-change: transform;
+    transition: all 0.3s ease-in-out;
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    cursor: grab;
+  }
+}
+/*
+.cards {
+    margin-top: 45%;
+    height: 50%;
+    border: 1px solid blue;
+    ion-card {
+        border: 1px solid black;
+        min-height: 150px;
+        width: 80%;
+        margin: auto;
+        position: relative;
+        left: 0;
+        right: 0;
+    }
+}*/
+
+table {
+    margin-top: 55%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+
+    tr {
+        width: 100%;
+        border: 1px solid black;
+        
+        .button1, .button2 {
+            height: 145px;
+            width: 145px;
+            border: 1px solid black;
+        }
+        .button1 {
+            background-color: red;
+        }
+        .button2{
+            background-color: green;
+        }
+    }
+}
+
+.hang-up-button {
+    transform: rotate(135deg);
+    bottom: 60px;
+}
+/*
+ion-card {
+    margin-top: 45%;
+}*/
+
+.newCard {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+}

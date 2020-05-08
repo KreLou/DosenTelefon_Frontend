@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { UserItem } from '../models/user-item';
 import { UserLoaderService } from './user-loader.service';
+import { PeerJSCallService } from '../_services/peer-jscall.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,20 +16,21 @@ export class AuthService {
 
   constructor(private userLoader: UserLoaderService) {
 
-    this.UserToken.subscribe(token => {
-      if (token) {
-        this.userLoader.getUserItem(this.getUUID()).subscribe(data => {
-          this.UserItem.next(data);
-        })
-      }
-    })
-
     if (localStorage.getItem('token')) {
       const foundToken = localStorage.getItem('token');
       this.setToken(foundToken);
     }
 
    }
+
+  public initializeDefaultUserItem() {
+    if (this.UserToken.getValue()) {
+      this.userLoader.getUserItem(this.getUUID()).subscribe(data => {
+        this.UserItem.next(data);
+        console.log('Load new user from server: ', data);
+      })
+    }
+  }
 
    public isLoggedIn() {
      return this.UserToken.asObservable();
