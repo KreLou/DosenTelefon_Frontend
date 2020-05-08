@@ -20,7 +20,8 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {
     this.initializeApp();
     this.router.events.subscribe((event: RouterEvent) => {
@@ -34,6 +35,7 @@ export class AppComponent implements OnInit {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.auth.initializeDefaultUserItem(); //Load User from Server
     });
   }
 

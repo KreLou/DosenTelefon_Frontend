@@ -3,6 +3,7 @@ import { IonInput, ModalController } from '@ionic/angular';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DisclaimerComponent } from 'src/app/StaticPages/disclaimer/disclaimer.component';
 import { UserLoaderService } from 'src/app/services/user-loader.service';
+import { PrivacyComponent } from 'src/app/StaticPages/privacy/privacy.component';
 
 @Component({
   selector: 'app-login',
@@ -41,6 +42,13 @@ export class LoginPage implements OnInit {
   async onOpenDisclaimer() {
     const modal = await this.modalController.create({
       component: DisclaimerComponent
+    });
+    return await modal.present();
+  }
+
+  async openPrivacy() {
+    const modal = await this.modalController.create({
+      component: PrivacyComponent
     });
     return await modal.present();
   }

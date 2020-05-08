@@ -30,5 +30,9 @@ export class UserLoaderService {
     return this.http.get<UserItem>(environment.apiURL + 'users/' + uuid);
   }
 
+  public updateUserItem(user: UserItem) {
+    return this.http.put<UserItem>(environment.apiURL + 'users/' + user.uuid, user);
+  }
+
 
 }

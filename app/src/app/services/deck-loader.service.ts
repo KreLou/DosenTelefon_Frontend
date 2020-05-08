@@ -11,6 +11,9 @@ export class DeckLoaderService {
   constructor(private http: HttpClient) { }
 
   public getDecks(): Observable<any> {
-    return this.http.get(environment.apiURL_Decks + 'decks');
+    return this.http.get(environment.apiURL + 'decks');
+  }
+  public getDeck(deck: string): Observable<any> {
+    return this.http.get(environment.apiURL + 'decks/' + deck);
   }
 }
